@@ -30,6 +30,9 @@
     <ClCompile Include="dishotomous.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="shubert_piyavski.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fzeros.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="dishotomous.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shubert_piyavski.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

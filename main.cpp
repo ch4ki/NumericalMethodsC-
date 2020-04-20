@@ -1,7 +1,9 @@
-#include "FibonacciMethod.h"
 #include <iostream>
-#include "Fzeros.h"
-#include <tuple>
+#include <vector>
+#include "shubert_piyavski.h"
+double function(double x) {
+	return 2 + x + sin(2*x);
+};
 int main(void) {
 	/*std::vector<double> x = { 0,2 };
 	Fzeros test([](double x) {return x * (x - 1.5); },x,0.001);
@@ -13,5 +15,14 @@ int main(void) {
 	//std::vector<double> x = { 0,2 };
 	//Fzeros test([](double x) {return x * (x - 1.5); }, x, 0.001);
 
+	
+
+
+	shubert_piyavskii(function,1,6,3,0.001);	
+	/*
+	std::vector<double> x = {-4, 4/3.0 };
+
+	Fzeros test([](double x) {return ( (x + 3) * pow((x - 1),2)  ); }, x, 0.001);
+	test.BrentMethod();*/
 	return 0;
 }

@@ -50,12 +50,14 @@ std::vector<double> Fzeros::secant(double starting_point, int iteration, double 
 	return optimum;
 };
 double Fzeros::secant(double a, double b) {
+	std::cout << "Secant method in" << std::endl;
 	double s = b - (function(b) * (b - a)) / (function(b) - function(a));
 	return s;
 
 }
 /*std::vector<std::tuple<double, double>> points*/
 double Fzeros::InverseQuadraticInterpolation(double x_0, double y_0, double x_1, double y_1, double x_2, double y_2) {
+	std::cout << "Inverse method in" << std::endl;
 	double x_i, f_i;
 	double a, b, c;
 	a = (y_1 * y_2 * x_0) / ((y_0 - y_1) * (y_0 - y_2));
@@ -66,11 +68,11 @@ double Fzeros::InverseQuadraticInterpolation(double x_0, double y_0, double x_1,
 
 	x_i = a + b + c;
 	f_i = function(x_i);
-	std::cout << x_i << " f(x)" << function(x_i) << std::endl;
 	return x_i;
 };
 void Fzeros::BrentMethod() {
-	double a, b = boundries[0], boundries[1];
+	double a = boundries[0];
+	double b = boundries[1];
 	double c, s, d;
 	if (function(boundries[0]) * function(boundries[1]) >= 0) {
 		std::cout << "Root is not bracketed exiting..";
@@ -93,19 +95,31 @@ void Fzeros::BrentMethod() {
 		}
 
 		if (
-			(a * 3 + b <= s || s <= b) && (3 * a + b >= s || s >= b) &&//codition 1
+			(a * 3 + b <= s || s <= b) && (3 * a + b >= s || s >= b) &&
 			flag || abs(s - b) >= abs(b - c) / 2 &&
 			!flag || abs(s - b) >= abs(c - d) / 2 &&
-			flag || abs(b - c) < abs
-
-
-			)
+			flag || abs(b - c) < abs(relativity) &&
+			flag || abs(c-d) < abs(relativity)	)
 		{
+			s = (a + b) / 2;
+			flag = true;
 		}
-
-
-
-
+		else {
+			flag = false;
+		}
+		d = c;
+		c = b;
+		if (function(a) * function(s) < 0) {
+			b = s;
+		}
+		else {
+			a = s;
+		}
+		if (abs(function(a)) < abs(function(b)))
+		{
+			std::swap(a, b);
+		}
 	} while (function(b) != 0 && function(s) != 0 && abs(b - a) < relativity);
 
+	std::cout << b;
 }
